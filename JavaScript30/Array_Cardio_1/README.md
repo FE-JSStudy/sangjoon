@@ -4,13 +4,58 @@
 
 ## 📍 적용하고 공부한 개념
 
-### let, const, var
+### Array.prototype.filter
 
-- var: 변수를 선언. 추가로 동시에 값을 초기화
-- let: 블록범위(scope)지역 변수 선언. 추가로 동시에 값을 초기화
-- const: 블록범위 읽기 전용 상수 선언
+arr.filter(callback(element[, index[, array]]),[,thisArg]) <br>
+: filter 메서드는 주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열을 반환합니다.
 
-변수가 재할당되는 것을 방지하기 위해, var보다는 let과 const로 변수를 선언했습니다.
+```javascript
+const people = [
+  { first: "Albert", last: "Einstein", year: 1879, passed: 1955 },
+  { first: "Isaac", last: "Newton", year: 1643, passed: 1727 },
+  { year: 1564, passed: 1642 },
+  { first: "Marie", last: "Curie", year: 1867, passed: 1934 },
+  { first: "Johannes", last: "Kepler", year: 1571, passed: 1630 },
+];
+
+//  함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열을 반환합니다.
+const filter1 = people.filter(
+  (person) => person.year >= 1500 && person.year < 2000
+);
+
+// 어떤 요소도 테스트를 통과하지 못했으면 빈 배열을 반환합니다.
+const filter2 = people.filter((person) => person.year >= 3000);
+console.table(filter1);
+console.table(filter2);
+```
+
+|                         결과                          |
+| :---------------------------------------------------: |
+| <img src="./images/1.png" alt="filter" width="600" /> |
+
+### Array.prototype.map
+
+arr.map(callback(currentValue[, index[, array]])[, thisArg])<br>
+: 메서드는 배열 내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환합니다.
+
+map을 호출한 배열의 중간이 비어있는 경우, 결과 배열 또한 동일한 인덱스를 빈 값으로 유지합니다.
+
+```javascript
+const people = [
+  { first: "Albert", last: "Einstein", year: 1879, passed: 1955 },
+  { first: "Isaac", last: "Newton", year: 1643, passed: 1727 },
+  { year: 1564, passed: 1642 },
+  { first: "Marie", last: "Curie", year: 1867, passed: 1934 },
+  { first: "Johannes", last: "Kepler", year: 1571, passed: 1630 },
+];
+
+const fullNames = people.map((person) => `${person.first} ${person.last}`);
+console.table(fullNames);
+```
+
+|                        결과                        |
+| :------------------------------------------------: |
+| <img src="./images/2.png" alt="map" width="600" /> |
 
 ## 📍 발생 문제
 
